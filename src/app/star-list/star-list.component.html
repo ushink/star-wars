@@ -1,13 +1,15 @@
 <div class="container">
   <div *ngFor="let planet of planets" class="planet-card">
     <h2 class="planet-card_name">{{ planet.name | uppercase }}</h2>
-    
-    <div class="planet-card_info">
+
+    <!-- <div *ngIf="planet" class="planet-card_info">
       <p class="planet-card_info__item">Diameter: {{ planet.diameter }}</p>
       <p class="planet-card_info__item">Climate: {{ planet.climate }}</p>
       <p class="planet-card_info__item">Terrain: {{ planet.terrain }}</p>
-    </div>
+    </div> -->
 
     <button type="button" (click)="onSelect(planet, $event)">click</button>
   </div>
 </div>
+
+<app-star-detail [planet]="selectedPlanet"></app-star-detail>
