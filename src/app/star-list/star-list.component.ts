@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { PLANETS } from '../mock';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { PlanetMock } from './models/star-list.model';
 import { StarDetailComponent } from '../star-detail/star-detail.component';
+import { StarService } from './service/star.service';
 
 @Component({
   selector: 'app-star-list',
@@ -12,7 +12,21 @@ import { StarDetailComponent } from '../star-detail/star-detail.component';
   styleUrl: './star-list.component.css',
 })
 export class StarListComponent {
-  planets = PLANETS;
+  planets: PlanetMock[] = [];
+
+  constructor(private starService: StarService) {}
+
+  // метод для получения данных из сервиса
+  getPlanets(): void {
+    this.starService
+      .getPlanets()
+      .subscribe((planets) => (this.planets = planets)); // Observable.subscribe()это критическая разница
+  }
+
+  // перехватчик жизненного цикла ngOnInit
+  ngOnInit(): void {
+    this.getPlanets();
+  }
 
   selectedPlanet?: PlanetMock;
   onSelect(planet: PlanetMock, event: Event): void {
