@@ -3,6 +3,7 @@ import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { PlanetMock } from './models/star-list.model';
 import { StarDetailComponent } from '../star-detail/star-detail.component';
 import { StarService } from './service/star.service';
+import { MessageService } from '../messages/service/message.service';
 
 @Component({
   selector: 'app-star-list',
@@ -14,7 +15,10 @@ import { StarService } from './service/star.service';
 export class StarListComponent {
   planets: PlanetMock[] = [];
 
-  constructor(private starService: StarService) {}
+  constructor(
+    private starService: StarService,
+    private messageService: MessageService
+  ) {}
 
   // метод для получения данных из сервиса
   getPlanets(): void {
@@ -32,6 +36,6 @@ export class StarListComponent {
   onSelect(planet: PlanetMock, event: Event): void {
     event.stopPropagation();
     this.selectedPlanet = planet;
-    console.log('planet', planet.name);
+    this.messageService.add(`Selected planet ${planet.name}`);
   }
 }
