@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { PlanetMock } from './models/star-list.model';
-import { StarDetailComponent } from '../star-detail/star-detail.component';
 import { StarService } from './service/star.service';
-import { MessageService } from '../messages/service/message.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-star-list',
   standalone: true,
-  imports: [NgFor, NgIf, UpperCasePipe, StarDetailComponent],
+  imports: [NgFor, NgIf, UpperCasePipe, RouterLink],
   templateUrl: './star-list.component.html',
   styleUrl: './star-list.component.css',
 })
@@ -17,7 +16,6 @@ export class StarListComponent {
 
   constructor(
     private starService: StarService,
-    private messageService: MessageService
   ) {}
 
   // метод для получения данных из сервиса
@@ -30,12 +28,5 @@ export class StarListComponent {
   // перехватчик жизненного цикла ngOnInit
   ngOnInit(): void {
     this.getPlanets();
-  }
-
-  selectedPlanet?: PlanetMock;
-  onSelect(planet: PlanetMock, event: Event): void {
-    event.stopPropagation();
-    this.selectedPlanet = planet;
-    this.messageService.add(`Selected planet ${planet.name}`);
   }
 }

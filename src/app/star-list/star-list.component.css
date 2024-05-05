@@ -13,11 +13,12 @@
   width: calc(10% - 10px); /* Расчет ширины карточки с учетом отступов */
   text-align: center;
   padding: 20px;
-  transition: all 0.3s ease;
+  transition: all 1s ease;
 }
 
 .planet-card:hover {
   box-shadow: 0 0 10px 5px rgba(212, 255, 0, 0.3);
+  transform: scale(1.1);
   transition: all 0.3s ease;
 }
 
@@ -33,6 +34,7 @@
   align-items: center;
   margin-top: 30px;
 }
+
 .planet-card_info__item {
   font-size: 16px;
   font-weight: 400;
