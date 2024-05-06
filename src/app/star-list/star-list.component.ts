@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { Planet, PlanetMock, PlanetsList } from './models/star-list.model';
+import { Planet } from './models/star-list.model';
 import { StarService } from './service/star.service';
 import { RouterLink } from '@angular/router';
 
@@ -21,8 +21,12 @@ export class StarListComponent implements OnInit {
     this.getPlanets();
   }
   getPlanets(): void {
-    this.starService
-      .getPlanets()
-      .subscribe((planets) => (this.planets = planets.results)); // Observable.subscribe()это критическая разница
+    this.starService.getPlanets().subscribe(
+      (planets) =>
+        (this.planets = planets.results.map((el, index) => ({
+          ...el,
+          id: index + 1,
+        })))
+    );
   }
 }

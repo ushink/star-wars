@@ -7,6 +7,7 @@ export interface PlanetMock {
 }
 
 export interface Planet {
+  id: number | null;
   name: string;
   rotation_period: string;
   orbital_period: string;

@@ -1,7 +1,10 @@
-<div *ngIf="planet" class="planet-card_info">
-  <p class="planet-card_info__item">Diameter: {{ planet.diameter }}</p>
-  <p class="planet-card_info__item">Climate: {{ planet.climate }}</p>
-  <p class="planet-card_info__item">Terrain: {{ planet.terrain }}</p>
-</div>
+<main class="wrapper">
+  <div *ngIf="planet" class="planet-card_info">
+    <h2>{{ planet.name }}</h2>
+    <p class="planet-card_info__item">Diameter: {{ planet.diameter }}</p>
+    <p class="planet-card_info__item">Climate: {{ planet.climate }}</p>
+    <p class="planet-card_info__item">Terrain: {{ planet.terrain }}</p>
+  </div>
 
-<button type="button" (click)="goBack()" class="button-back">go back</button>
+  <button type="button" (click)="goBack()" class="button-back">go back</button>
+</main>

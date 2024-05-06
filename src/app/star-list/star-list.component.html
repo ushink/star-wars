@@ -1,7 +1,7 @@
 <div class="container">
   <a
     *ngFor="let planet of planets"
-    routerLink="/planet/{{ planet.name }}"
+    routerLink="/planet/{{ planet.id }}"
     class="planet-card"
   >
     <h2 class="planet-card_name">{{ planet.name | uppercase }}</h2>
