@@ -9,3 +9,21 @@
   font-weight: 400;
   line-height: 16px;
 }
+
+.button-back {
+  margin-top: 20px;
+  background-color: #eee;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.button-back:hover {
+  background-color: #cfd8dc;
+}
+
+.button-back:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: auto;
+}

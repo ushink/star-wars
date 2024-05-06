@@ -14,6 +14,10 @@ export class StarService {
     this.messageService.add('StarService: fetched planets');
     return planets;
   }
+  getPlanet(name: string): Observable<PlanetMock> {
+    const planet = PLANETS.find((planet) => planet.name === name)!;
+    return of(planet);
+  }
 }
 
 // of(PLANETS) возвращает объект Observable<PlanetMock[]>,
