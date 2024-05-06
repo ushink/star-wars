@@ -1,11 +1,3 @@
-export interface PlanetMock {
-  id: number;
-  name: string;
-  diameter: string;
-  climate: string;
-  terrain: string;
-}
-
 export interface Planet {
   id: number | null;
   name: string;
