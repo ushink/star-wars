@@ -1,19 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { PLANETS } from '../../mock';
-import { PlanetMock } from '../models/star-list.model';
+import { Planet, PlanetMock, PlanetsList } from '../models/star-list.model';
 import { Observable, of } from 'rxjs';
-import { MessageService } from '../../messages/service/message.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StarService {
-  constructor(private messageService: MessageService) {}
-  getPlanets(): Observable<PlanetMock[]> {
-    const planets = of(PLANETS);
-    this.messageService.add('StarService: fetched planets');
-    return planets;
+  // constructor(private messageService: MessageService) {}
+
+  private apiUrl = 'https://swapi.dev/api/';
+  private http = inject(HttpClient);
+
+  getPlanets(): Observable<PlanetsList> {
+    return this.http.get<PlanetsList>(`${this.apiUrl}planets/?page=2`);
   }
+ 
   getPlanet(name: string): Observable<PlanetMock> {
     const planet = PLANETS.find((planet) => planet.name === name)!;
     return of(planet);

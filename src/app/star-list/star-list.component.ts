@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { PlanetMock } from './models/star-list.model';
+import { Planet, PlanetMock, PlanetsList } from './models/star-list.model';
 import { StarService } from './service/star.service';
 import { RouterLink } from '@angular/router';
 
@@ -12,19 +12,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './star-list.component.css',
 })
 export class StarListComponent implements OnInit {
-  planets: PlanetMock[] = [];
+  planets: Planet[] = [];
 
-  // constructor(private starService: StarService) {}
   private starService = inject(StarService);
 
   // перехватчик жизненного цикла ngOnInit
   ngOnInit(): void {
     this.getPlanets();
   }
-  // метод для получения данных из сервиса
   getPlanets(): void {
     this.starService
       .getPlanets()
-      .subscribe((planets) => (this.planets = planets)); // Observable.subscribe()это критическая разница
+      .subscribe((planets) => (this.planets = planets.results)); // Observable.subscribe()это критическая разница
   }
 }
