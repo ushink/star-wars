@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { Planet, PlanetsList } from '../star-list/models/star-list.model';
-import { Observable } from 'rxjs';
+import { Planet, PlanetsList } from '../models/star-list.model';
+import { Observable, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Residents } from '../models/star-detail.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +17,12 @@ export class StarService {
 
   getPlanet(id: number): Observable<Planet> {
     return this.http.get<Planet>(`${this.apiUrl}planets/${id}`);
+  }
+
+  getResidents(urls: string[] | null): Observable<Residents[]> {
+    if (!urls) {
+      return new Observable<Residents[]>();
+    }
+    return forkJoin(urls.map((url) => this.http.get<Residents>(url)));
   }
 }
