@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  padding-left: calc(50% - 600px);
+  padding-right: calc(50% - 600px);
+  gap: 30px;
+}
+
+.planet-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.15);
+  width: calc(15% - 10px); /* Расчет ширины карточки с учетом отступов */
+  text-align: center;
+  padding: 20px;
+  transition: all 1s ease;
+}
+
+.planet-card:hover {
+  box-shadow: 0 0 10px 5px rgba(212, 255, 0, 0.3);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.planet-card_name {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.planet-card_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.planet-card_info__item {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+}

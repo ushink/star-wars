@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(106, 195, 213);
+  background: radial-gradient(
+    circle,
+    rgba(106, 195, 213, 1) 0%,
+    rgba(28, 55, 88, 1) 100%
+  );
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+ul li {
+  list-style: none;
+}

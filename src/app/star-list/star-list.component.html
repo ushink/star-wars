@@ -1,0 +1,15 @@
+<div class="container">
+  <a
+    *ngFor="let planet of planets"
+    routerLink="/planet/{{ planet.id }}"
+    class="planet-card"
+  >
+    <h2 class="planet-card_name">{{ planet.name | uppercase }}</h2>
+
+    <div *ngIf="planet" class="planet-card_info">
+      <p class="planet-card_info__item">Climate: {{ planet.climate }}</p>
+      <p class="planet-card_info__item">Terrain: {{ planet.terrain }}</p>
+    </div>
+  </a>
+</div>
+
