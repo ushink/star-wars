@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Planet, PlanetsList } from '../models/star-list.model';
+import { Planet, PlanetsList } from '../star-list/models/star-list.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
