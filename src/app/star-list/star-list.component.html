@@ -7,9 +7,10 @@
     <h2 class="planet-card_name">{{ planet.name | uppercase }}</h2>
 
     <div *ngIf="planet" class="planet-card_info">
-      <p class="planet-card_info__item">Climate: {{ planet.climate }}</p>
-      <p class="planet-card_info__item">Terrain: {{ planet.terrain }}</p>
+      <strong>Climate:</strong>
+      <p class="planet-card_info__item">{{ planet.climate }}</p>
+      <strong>Terrain:</strong>
+      <p class="planet-card_info__item">{{ planet.terrain }}</p>
     </div>
   </a>
 </div>
-

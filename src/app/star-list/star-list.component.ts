@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { Planet } from './models/star-list.model';
-import { StarService } from './service/star.service';
+import { Planet } from '../models/star-list.model';
+import { StarService } from '../service/star.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
