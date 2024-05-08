@@ -4,11 +4,12 @@ import { NgIf, Location, NgFor } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { StarService } from '../service/star.service';
 import { Residents } from '../models/star-detail.model';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-star-detail',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgIf, NgFor, MatSelectModule],
   templateUrl: './star-detail.component.html',
   styleUrl: './star-detail.component.css',
 })
@@ -47,8 +48,8 @@ export class StarDetailComponent implements OnInit {
 
   handleSort(gender: any): void {
     this.residents?.sort((a, b) => {
-      if (a.gender === gender.target.value.toLocaleLowerCase()) return -1;
-      if (b.gender === gender.target.value.toLocaleLowerCase()) return 1;
+      if (a.gender === gender.value) return -1;
+      if (b.gender === gender.value) return 1;
       return 0;
     });
   }
