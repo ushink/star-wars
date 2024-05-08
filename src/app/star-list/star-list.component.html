@@ -3,7 +3,6 @@
     <div class="planet-card_front">
       <h2 class="planet-card_front__name">{{ planet.name | uppercase }}</h2>
     </div>
-
     <div class="planet-card_back">
       <div class="planet-card_back__info">
         <p class="info_title">Climate:</p>
@@ -17,3 +16,13 @@
     </div>
   </div>
 </div>
+<mat-paginator
+  class="paginator"
+  [length]="6"
+  [pageSize]="1"
+  [pageIndex]="0"
+  [hidePageSize]="true"
+  [showFirstLastButtons]="true"
+  (page)="getPlanets($event)"
+  aria-label="Select page"
+></mat-paginator>

@@ -11,8 +11,8 @@ export class StarService {
   private apiUrl = 'https://swapi.dev/api/';
   private http = inject(HttpClient);
 
-  getPlanets(): Observable<PlanetsList> {
-    return this.http.get<PlanetsList>(`${this.apiUrl}planets/`);
+  getPlanets(page: number): Observable<PlanetsList> {
+    return this.http.get<PlanetsList>(`${this.apiUrl}planets/?page=${page}`);
   }
 
   getPlanet(id: number): Observable<Planet> {
