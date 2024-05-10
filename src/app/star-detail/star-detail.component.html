@@ -1,10 +1,45 @@
-<main class="wrapper">
-  <div *ngIf="planet" class="planet-card_info">
-    <h2>{{ planet.name }}</h2>
-    <p class="planet-card_info__item">Diameter: {{ planet.diameter }}</p>
-    <p class="planet-card_info__item">Climate: {{ planet.climate }}</p>
-    <p class="planet-card_info__item">Terrain: {{ planet.terrain }}</p>
+<div class="wrapper">
+  <div *ngIf="isLoading" class="loader">Loading...</div>
+
+  <div *ngIf="planet" class="planet">
+    <h2 class="planet_name">{{ planet.name }}</h2>
+    <p class="planet_info">Diameter: {{ planet.diameter }}</p>
+    <p class="planet_info">Orbital period: {{ planet.orbital_period }}</p>
+    <p class="planet_info">Rotation period: {{ planet.rotation_period }}</p>
   </div>
 
-  <button type="button" (click)="goBack()" class="button-back">go back</button>
-</main>
+  <table *ngIf="residents; else noDataBlock">
+    <caption>
+      Residents
+    </caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>
+          <mat-form-field>
+            <mat-label>Sort by gender:</mat-label>
+            <mat-select (selectionChange)="handleSort($event)">
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female </mat-option>
+              <mat-option value="n/a">n/a</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resident of residents">
+        <td>{{ resident.name }}</td>
+        <td>{{ resident.gender }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noDataBlock>
+    <span class="span-text">There are no residents on this planet...</span>
+  </ng-template>
+
+  <button mat-raised-button (click)="goBack()" class="button-back">
+    go back
+  </button>
+</div>

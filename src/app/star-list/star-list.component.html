@@ -1,15 +1,28 @@
 <div class="container">
-  <a
-    *ngFor="let planet of planets"
-    routerLink="/planet/{{ planet.id }}"
-    class="planet-card"
-  >
-    <h2 class="planet-card_name">{{ planet.name | uppercase }}</h2>
-
-    <div *ngIf="planet" class="planet-card_info">
-      <p class="planet-card_info__item">Climate: {{ planet.climate }}</p>
-      <p class="planet-card_info__item">Terrain: {{ planet.terrain }}</p>
+  <div class="planet-card" *ngFor="let planet of planets">
+    <div class="planet-card_front">
+      <h2 class="planet-card_front__name">{{ planet.name | uppercase }}</h2>
     </div>
-  </a>
+    <div class="planet-card_back">
+      <div class="planet-card_back__info">
+        <p class="info_title">Climate:</p>
+        <p class="info_item">{{ planet.climate }}</p>
+        <p class="info_title">Terrain:</p>
+        <p class="info_item">{{ planet.terrain }}</p>
+      </div>
+      <a class="planet-card_back__link" routerLink="/planet/{{ planet.id }}">
+        View the residents
+      </a>
+    </div>
+  </div>
 </div>
-
+<mat-paginator
+  class="paginator"
+  [length]="6"
+  [pageSize]="1"
+  [pageIndex]="0"
+  [hidePageSize]="true"
+  [showFirstLastButtons]="true"
+  (page)="getPlanets($event)"
+  aria-label="Select page"
+></mat-paginator>
