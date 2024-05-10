@@ -5,11 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { StarService } from '../service/star.service';
 import { Residents } from '../models/star-detail.model';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-star-detail',
   standalone: true,
-  imports: [NgIf, NgFor, MatSelectModule],
+  imports: [NgIf, NgFor, MatSelectModule, MatButtonModule],
   templateUrl: './star-detail.component.html',
   styleUrl: './star-detail.component.css',
 })
@@ -30,16 +31,22 @@ export class StarDetailComponent implements OnInit {
   getPlanet(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.starService.getPlanet(id).subscribe((planet) => {
-      this.planet = planet;
-      this.urls = planet.residents;
+    this.starService.getPlanet(id).subscribe({
+      next: (planet) => {
+        this.planet = planet;
+        this.urls = planet.residents;
+      },
+      error: (err) => console.error('Error fetching planet:', err),
     });
   }
 
   getResidents(): void {
-    this.starService
-      .getResidents(this.urls)
-      .subscribe((residents) => (this.residents = residents));
+    this.starService.getResidents(this.urls).subscribe({
+      next: (residents) => {
+        this.residents = residents;
+      },
+      error: (err) => console.error('Error fetching residents:', err),
+    });
   }
 
   goBack(): void {
