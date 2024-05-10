@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './star-detail.component.css',
 })
 export class StarDetailComponent implements OnInit {
+  isLoading: boolean = false;
   planet: Planet | undefined;
   urls!: string[] | null;
   residents: Residents[] | undefined;
@@ -25,16 +26,17 @@ export class StarDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlanet();
-    this.getResidents();
   }
-
   getPlanet(): void {
+    this.isLoading = true;
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.starService.getPlanet(id).subscribe({
       next: (planet) => {
         this.planet = planet;
         this.urls = planet.residents;
+        this.getResidents();
+        this.isLoading = false;
       },
       error: (err) => console.error('Error fetching planet:', err),
     });

@@ -1,4 +1,6 @@
 <div class="wrapper">
+  <div *ngIf="isLoading" class="loader">Loading...</div>
+
   <div *ngIf="planet" class="planet">
     <h2 class="planet_name">{{ planet.name }}</h2>
     <p class="planet_info">Diameter: {{ planet.diameter }}</p>
@@ -34,7 +36,7 @@
   </table>
 
   <ng-template #noDataBlock>
-    <span class="span-text">There are no residents on this planet</span>
+    <span class="span-text">There are no residents on this planet...</span>
   </ng-template>
 
   <button mat-raised-button (click)="goBack()" class="button-back">

@@ -18,10 +18,10 @@ export class StarListComponent implements OnInit {
 
   private starService = inject(StarService);
 
-  // перехватчик жизненного цикла ngOnInit
   ngOnInit(): void {
     this.getPlanets();
   }
+  
   getPlanets(event?: PageEvent): void {
     this.page = event ? event.pageIndex + 1 : this.page;
 
