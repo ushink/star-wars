@@ -91,6 +91,10 @@
   font-weight: 600;
 }
 
+.planet-card_back__link:active {
+  color: rgba(252, 199, 83, 0.918);
+}
+
 .planet-card_back__link::after {
   content: "→";
 }
