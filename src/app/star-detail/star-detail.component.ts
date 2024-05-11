@@ -6,6 +6,7 @@ import { StarService } from '../service/star.service';
 import { Residents } from '../models/star-detail.model';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-star-detail',
@@ -24,22 +25,23 @@ export class StarDetailComponent implements OnInit {
 
   private starService = inject(StarService);
 
-  ngOnInit(): void {
-    this.getPlanet();
+  async ngOnInit(): Promise<void> {
+    await this.getPlanet();
+    this.getResidents();
   }
-  getPlanet(): void {
+
+  async getPlanet(): Promise<void> {
     this.isLoading = true;
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.starService.getPlanet(id).subscribe({
-      next: (planet) => {
-        this.planet = planet;
-        this.urls = planet.residents;
-        this.getResidents();
-        this.isLoading = false;
-      },
-      error: (err) => console.error('Error fetching planet:', err),
-    });
+    try {
+      const planet = await lastValueFrom(this.starService.getPlanet(id));
+      this.planet = planet;
+      this.urls = planet.residents;
+      this.isLoading = false;
+    } catch (err) {
+      console.error('Error fetching planet:', err);
+    }
   }
 
   getResidents(): void {
