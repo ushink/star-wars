@@ -1,6 +1,28 @@
-# MyApp
+# StarWars
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+
+## Функциональность
+
+* Вывод всех планет.
+* Пагинация.
+* При клике на карточку планеты открываются подробности.
+* Сортировка: по полу персонажа.
+* Кнопка возврата к главной странице.
+
+## Технологии
+
+* Angular
+* TypeScript
+* HTML
+* CSS
+
+### Используемые библиотеки
+[Angular Material](https://material.angular.io/)
+
+## Screenshot
+![image](https://github.com/ushink/star-wars/assets/131166403/fc277769-3038-4a66-8d47-cae070a43e7c)
+![image](https://github.com/ushink/star-wars/assets/131166403/2d2b798d-6c8a-49be-949f-bc359f421fbc)
 
 ## Development server
 
